@@ -20,7 +20,7 @@ public class Iptable {
     @Column(name = "idiptable", nullable = false)
     private Integer id;
 
-    @Column(name = "dni")
+    @Column(name = "ip")
     private String ip;
 
     @Column(name = "uid")
