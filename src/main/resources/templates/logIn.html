@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
         <title>Title</title>
@@ -20,7 +20,7 @@
                                             <h4 class="mt-1 mb-5 pb-1">We are The Lotus Team</h4>
                                         </div>
 
-                                        <form>
+                                        <form th:action="@{'/log'}" method="post">
                                             <p>Please login to your account</p>
 
                                             <div class="form-outline mb-4">
