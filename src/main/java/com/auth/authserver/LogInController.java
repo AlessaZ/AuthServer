@@ -17,7 +17,7 @@ import java.util.Optional;
 @Controller
 public class LogInController {
 
-    private static int MINUTOS_PERMISO = 2; //Cambiar luego a 30
+    private static int MINUTOS_PERMISO = 30; //Cambiar luego a 30
 
     @Autowired
     UserRepo userRepo;
