@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
-public interface IptableRepo extends JpaRepository<Iptable, String> {
+public interface IptableRepo extends JpaRepository<Iptable, Integer> {
 
     @Transactional
     @Modifying

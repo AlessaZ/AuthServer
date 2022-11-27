@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" th:href="@{/favicon.ico}">
+    <link rel="stylesheet" th:href="@{/css.css}" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <title>Gestión de recursos</title>
+</head>
+<body>
+<nav th:replace="fragments/navbar.html :: navbar('resource')"></nav>
+<div class="container">
+  <div class="pt-4 pb-2 border-bottom d-flex justify-content-between align-items-center">
+      <h1 class="">Lista de Recursos</h1>
+      <a style="background-color: #042354; text-transform: capitalize; height: auto"  class="btn btn-primary" th:href="@{'/resource/new'}">NUEVO RECURSO</a>
+  </div>
+
+  <table class="table">
+    <tr>
+      <th>#</th>
+      <th>Recurso</th>
+      <th>IP</th>
+      <th>Puerto</th>
+      <th style="width: 200px"></th>
+    </tr>
+      <!--/*@thymesVar id="resourceList" type="java.util.List<com.auth.authserver.entity.Resource>"*/-->
+    <tr th:each="resource, info : ${resourceList}">
+      <td th:text="${info.index + 1}"></td>
+      <td th:text="${resource.alias}"></td>
+      <td th:text="${resource.ip}"></td>
+      <td th:text="${resource.port}"></td>
+      <td style="width: fit-content"><a style="background-color: #042354; text-transform: capitalize"  class="btn btn-primary" th:href="@{'/resource/edit' + '?id=' + ${resource.id}}">EDITAR</a>
+          <a style="text-transform: capitalize"  class="btn btn-danger" th:href="@{'/resource/delete' + '?id=' + ${resource.id}}">ELIMINAR</a></td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

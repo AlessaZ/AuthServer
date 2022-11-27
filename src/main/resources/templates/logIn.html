@@ -1,62 +1,63 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" th:href="@{css.css}" />
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-        <title>Login</title>
-    </head>
-    <body>
-        <section class="h-100 gradient-form" style="background-color: rgb(255,255,255);">
-            <div class="container py-5 h-100">
-                <div class="row d-flex justify-content-center align-items-center h-100">
-                    <div class="col-xl-10">
-                        <div class="card rounded-3 text-black">
-                            <div class="row g-0">
-                                <div class="col-lg-6">
-                                    <div class="card-body p-md-5 mx-md-4">
-
-                                        <div class="text-center">
-                                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
-                                                 style="width: 185px;" alt="logo">
-                                            <h4 class="mt-1 mb-5 pb-1">Somos G7</h4>
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" th:href="@{/favicon.ico}">
+    <link rel="stylesheet" th:href="@{/css.css}" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <title>Login</title>
+</head>
+<body>
+<div class="wrapper">
+    <div id="header">
+        <div class="head-content">
+            <img style="width: auto;height: 57px; margin-left: 31px;" th:src="@{logo_pucp2021.svg}">
+            <div class="clear cero"></div>
+        </div>
+    </div>
+    <div id="cuerpo" class="container py-5 h-100" >
+        <div class="row d-flex justify-content-center align-items-center h-100 w-100">
+            <div class="col w-100">
+                <div class="card rounded-3 text-black w-100">
+                    <div class="row g-0">
+                        <div class="col-lg-6">
+                            <div class="card-body p-md-5 mx-md-4">
+                                <form th:action="@{'/log'}" method="post">
+                                    <p>Por favor ingresa tus credenciales</p>
+                                    <div class="form-outline mt-4 mb-4">
+                                        <label class="form-label" for="form2Example11">Código</label>
+                                        <input type="number" name="codigo" id="form2Example11" class="form-control"/>
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="form2Example22">Contraseña</label>
+                                        <input type="password" name="password" id="form2Example22" class="form-control" />
+                                    </div>
+                                    <div class="text-center pt-1 mb-3 pb-1">
+                                        <button class="btn btn-dark btn-block fa-lg mb-3" type="submit" style="background-color: #042354; text-transform: capitalize" >
+                                            ACCEDER</button>
+                                    </div>
+                                    <div th:if="${alert!=null}" class="alert alert-danger d-flex align-items-center" role="alert">
+                                        <div th:text="${alert}">
                                         </div>
-
-                                        <form th:action="@{'/log'}" method="post">
-                                            <p>Por favor ingresa tus credenciales</p>
-
-                                            <div class="form-outline mt-4 mb-4">
-                                                <label class="form-label" for="form2Example11">Código</label>
-                                                <input type="number" name="codigo" id="form2Example11" class="form-control"/>
-                                            </div>
-
-                                            <div class="form-outline mb-4">
-                                                <label class="form-label" for="form2Example22">Contraseña</label>
-                                                <input type="password" name="password" id="form2Example22" class="form-control" />
-                                            </div>
-
-                                            <div class="text-center pt-1 mb-5 pb-1">
-                                                <button class="btn btn-dark btn-block fa-lg mb-3" type="submit" >
-                                                    Ingresar</button>
-                                            </div>
-
-                                        </form>
-
                                     </div>
-                                </div>
-                                <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
-                                    <div class="text-white px-3 py-4 p-md-5 mx-md-4">
-                                        <h4 class="mb-4">Somos más que una compañía</h4>
-                                        <p class="small mb-0">Esta plataforma permite el acceso a recursos de la Pontifica Universidad Católica del Perú de acuerdo a roles
-                                        definidos por la empresa. Aquellos que no se encuentren logueados en la plataforma, solo podrán tener acceso a internet.</p>
-                                    </div>
-                                </div>
+
+                                </form>
+
+                            </div>
+                        </div>
+                        <div  class="col-lg-6 d-flex align-items-center gradient-custom-2">
+                            <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                                <h4 class="mb-4">Está accediendo al servicio de autenticación de recursos Intranet</h4>
+                                <p class="small mb-0">Esta plataforma permite el acceso a recursos de la Pontifica Universidad Católica del Perú de acuerdo a roles
+                                    definidos por la empresa. Aquellos que no se encuentren logueados en la plataforma, solo podrán tener acceso a internet.</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-    </body>
+        </div>
+    </div>
+</div>
+</body>
 </html>

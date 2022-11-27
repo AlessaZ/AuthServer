@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<nav id="header" th:if="${session.isDTI!=null && session.isDTI == true}"  th:fragment="navbar(pagina)" class="navbar navbar-expand-lg navbar-dark h6" >
+    <div class="container head-content">
+        <a class="navbar-brand" th:href="@{/}" style="font-weight: 600">
+            <img  th:src="@{/logo_pucp2021.svg}" style="max-height: 50px" class="img-fluid"  alt="pucp">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a th:class="nav-link" th:classappend="${pagina =='rol'} ? 'active': ''"  aria-current="page" th:href="@{'/rol/list'}" >Gestión de roles</a>
+                <a th:class="nav-link" th:classappend="${pagina =='resource'}? 'active': ''"  aria-current="page" th:href="@{'/resource/list'}" >Gestión de recursos</a>
+            </div>
+        </div>
+    </div>
+</nav>
+</body>
+</html>
