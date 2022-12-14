@@ -24,7 +24,21 @@
 .head-content {
     width: 960px;
     margin: 0px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
+
+.white-link {
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+}
+
+.white-link:hover {
+    color: #cecece;
+}
+
 #header {
     padding: 22px 0px 38px;
     background: #042354 repeat-x bottom left;

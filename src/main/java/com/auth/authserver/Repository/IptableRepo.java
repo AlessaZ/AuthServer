@@ -20,4 +20,8 @@ public interface IptableRepo extends JpaRepository<Iptable, Integer> {
     void crearEvento(int id, int minutos);
 
     public Optional<Iptable> findByUidAndIp(String uid, String ip);
+
+    @Transactional
+    @Modifying
+    public void deleteByUidAndIp(String uid, String ip);
 }

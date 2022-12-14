@@ -15,6 +15,12 @@
                 <a th:class="nav-link" th:classappend="${pagina =='resource'}? 'active': ''"  aria-current="page" th:href="@{'/resource/list'}" >Gestión de recursos</a>
             </div>
         </div>
+        <div class="navbar-nav">
+            <a class="nav-link" th:href="@{/logout}">
+                <span>Cerrar sesión</span>
+                <i class="bi bi-box-arrow-in-right"></i>
+            </a>
+        </div>
     </div>
 </nav>
 </body>

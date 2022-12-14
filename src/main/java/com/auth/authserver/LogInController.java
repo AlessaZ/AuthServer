@@ -22,7 +22,7 @@ import java.util.Optional;
 @Controller
 public class LogInController {
 
-    private static int MINUTOS_PERMISO = 10; //Cambiar luego a 30
+    private static int MINUTOS_PERMISO = 30; //Cambiar luego a 30
 
     @Autowired
     UserRepo userRepo;
@@ -64,7 +64,7 @@ public class LogInController {
                 session.removeAttribute("nombre");
                 session.removeAttribute("endTime");
                 session.removeAttribute("isDTI");
-                return "logIn";
+                return "redirect:/";
             }
         }
 
@@ -88,10 +88,21 @@ public class LogInController {
         }
         boolean isDTI = userRepo.isUserDTI(optUser.get().getUid());
         session.setAttribute("isDTI", isDTI);
-        Duration d = Duration.between(LocalDateTime.now(), localDateTime);
-        String strRemaining = String.format("%02d:%02d%n", d.toMinutes(), d.minusMinutes(d.toMinutes()).getSeconds());
-        model.addAttribute("remainingTime", strRemaining);
-        return "message";
+        return "redirect:/";
+    }
+
+    @GetMapping(value = "/logout")
+    public String logout(HttpServletRequest request, HttpSession session) {
+        if (session.getAttribute("uid") != null){
+                String uid = (String) session.getAttribute("uid");
+                iptableRepo.deleteByUidAndIp(uid, request.getRemoteAddr());
+                session.removeAttribute("uid");
+                session.removeAttribute("nombre");
+                session.removeAttribute("endTime");
+                session.removeAttribute("isDTI");
+                return "redirect:/";
+        }
+        return "redirect:/";
     }
     
 }
